@@ -47,9 +47,11 @@ class OffbeatViewCounter {
 		$csvargs = array(
 			'post_id' => $post_ids,
 			'limit' => 500,
-			'days' => -1);
+			'days' => -1,
+			'summarize' => true);
 		$response = stats_get_csv('postviews', $csvargs);
 		$result = $this->update_post_counts($response);
+		error_log(json_encode($result));
 	}
 
 	function get_post_ids($number, $offset = 0){
